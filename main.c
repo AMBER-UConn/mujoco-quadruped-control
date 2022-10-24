@@ -155,12 +155,16 @@ int main(int argc, const char** argv)
     glfwSetScrollCallback(window, scroll);
 
     // double arr_view[] = {89.608063, -11.588379, 5, 0.000000, 0.000000, 0.000000};
-    // cam.azimuth = arr_view[0];
-    // cam.elevation = arr_view[1];
-    // cam.distance = arr_view[2];
-    // cam.lookat[0] = arr_view[3];
-    // cam.lookat[1] = arr_view[4];
-    // cam.lookat[2] = arr_view[5];
+    double arr_view[] = {145.028571, -22.371429, 1.850783, 0.000000, 0.000000, 0.000000};
+
+    cam.azimuth = arr_view[0];
+    cam.elevation = arr_view[1];
+    cam.distance = arr_view[2];
+    cam.lookat[0] = arr_view[3];
+    cam.lookat[1] = arr_view[4];
+    cam.lookat[2] = arr_view[5];
+
+    m->opt.gravity[3] = -1.62;
 
     // use the first while condition if you want to simulate for a period.
     while( !glfwWindowShouldClose(window))
@@ -182,7 +186,7 @@ int main(int argc, const char** argv)
           // update scene and render
         mjv_updateScene(m, d, &opt, NULL, &cam, mjCAT_ALL, &scn);
         mjr_render(viewport, &scn, &con);
-        //printf("{%f, %f, %f, %f, %f, %f};\n",cam.azimuth,cam.elevation, cam.distance,cam.lookat[0],cam.lookat[1],cam.lookat[2]);
+        // printf("{%f, %f, %f, %f, %f, %f};\n",cam.azimuth,cam.elevation, cam.distance,cam.lookat[0],cam.lookat[1],cam.lookat[2]);
 
         // swap OpenGL buffers (blocking call due to v-sync)
         glfwSwapBuffers(window);
